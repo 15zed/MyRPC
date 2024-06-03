@@ -1,0 +1,3 @@
+etcd=org.example.rpcstarter.registry.EtcdRegistry
+zookeeper=org.example.rpcstarter.registry.ZookeeperRegistry
+nacos=org.example.rpcstarter.registry.NacosRegistry

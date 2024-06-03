@@ -1,0 +1,4 @@
+failFast=org.example.rpcstarter.tolerant.FailFastPolicy
+failSafe=org.example.rpcstarter.tolerant.FailSafePolicy
+failOver=org.example.rpcstarter.tolerant.FailOverPolicy
+failBack=org.example.rpcstarter.tolerant.FailBackPolicy

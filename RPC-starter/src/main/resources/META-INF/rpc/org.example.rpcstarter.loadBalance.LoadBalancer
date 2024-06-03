@@ -1,0 +1,5 @@
+roundRobin=org.example.rpcstarter.loadBalance.RoundRobinLoadBalance
+random=org.example.rpcstarter.loadBalance.RandomLoadBalance
+consistent=org.example.rpcstarter.loadBalance.ConsistentLoadBalance
+weightRoundRobin=org.example.rpcstarter.loadBalance.WeightRandomLoadBalance
+weightRandom=org.example.rpcstarter.loadBalance.WeightRoundRobinLoadBalance

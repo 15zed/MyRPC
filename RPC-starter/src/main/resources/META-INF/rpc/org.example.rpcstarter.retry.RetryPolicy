@@ -1,0 +1,3 @@
+fixedWait=org.example.rpcstarter.retry.FixedWaitPolicy
+incrementWait=org.example.rpcstarter.retry.IncrementingWaitPolicy
+exponentialWait=org.example.rpcstarter.retry.ExponentialWaitPolicy

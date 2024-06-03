@@ -1,0 +1,10 @@
+rpc:
+  name: hello
+  version: 2.0
+  serverPort: 8082
+  serverHost: localhost
+  mock: false
+  serializer: jdk
+  registryConfig:
+    registry: nacos
+    address: localhost:8848

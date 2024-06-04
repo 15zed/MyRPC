@@ -138,7 +138,7 @@ public class ZookeeperRegistry implements Registry {
     @Override
     public List<ServiceMetaInfo> discovery(String serviceKey) {
         //先从缓存中获取
-        List<ServiceMetaInfo> serviceMetaInfos = serviceCache.readCache();
+        List<ServiceMetaInfo> serviceMetaInfos = serviceCache.readCache(serviceKey);
         if (serviceMetaInfos != null && !serviceMetaInfos.isEmpty()) {
             return serviceMetaInfos;
         }
@@ -151,7 +151,7 @@ public class ZookeeperRegistry implements Registry {
                 watch(serviceMetaInfo.getServiceNodeKey());
             }
             //写入缓存
-            serviceCache.setCache(metaInfoList);
+            serviceCache.setCache(serviceKey,metaInfoList);
             return metaInfoList;
         } catch (Exception e) {
             throw new BusinessException(ErrorCode.UNKNOWN_ERROR,e.getMessage());

@@ -119,8 +119,7 @@ public class EtcdRegistry implements Registry {
     @Override
     public List<ServiceMetaInfo> discovery(String serviceKey) {
         //先从缓存中获取
-
-        List<ServiceMetaInfo> serviceMetaInfos = serviceCache.readCache();
+        List<ServiceMetaInfo> serviceMetaInfos = serviceCache.readCache(serviceKey);
         if (serviceMetaInfos != null && !serviceMetaInfos.isEmpty()) {
             return serviceMetaInfos;
         }
@@ -139,7 +138,7 @@ public class EtcdRegistry implements Registry {
                 return JSONUtil.toBean(jsValue, ServiceMetaInfo.class);
             }).collect(Collectors.toList());
             //写入服务缓存
-            serviceCache.setCache(metaInfoList);
+            serviceCache.setCache(serviceKey,metaInfoList);
             return metaInfoList;
         } catch (InterruptedException | ExecutionException e) {
             throw new BusinessException(ErrorCode.ETCD_CLIENT_SEARCH_ERROR,e.getMessage());

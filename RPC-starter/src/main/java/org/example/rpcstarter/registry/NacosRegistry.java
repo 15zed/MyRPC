@@ -1,6 +1,5 @@
 package org.example.rpcstarter.registry;
 
-
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
@@ -92,7 +91,7 @@ public class NacosRegistry implements Registry {
     public List<ServiceMetaInfo> discovery(String serviceKey) {
         try {
             //先从缓存中获取
-            List<ServiceMetaInfo> serviceMetaInfoList = serviceCache.readCache();
+            List<ServiceMetaInfo> serviceMetaInfoList = serviceCache.readCache(serviceKey);
             if (serviceMetaInfoList != null && !serviceMetaInfoList.isEmpty()) {
                 return serviceMetaInfoList;
             }
@@ -106,7 +105,7 @@ public class NacosRegistry implements Registry {
                 serviceMetaInfo.setServicePort(instance.getPort());
                 return serviceMetaInfo;
             }).collect(Collectors.toList());
-            serviceCache.setCache(serviceMetaInfos);
+            serviceCache.setCache(serviceKey,serviceMetaInfos);
             return serviceMetaInfos;
         } catch (NacosException e) {
             throw new BusinessException(ErrorCode.NACOS_CLIENT_DISCOVERY_ERROR, e.getMessage());
@@ -161,4 +160,3 @@ public class NacosRegistry implements Registry {
         }
     }
 }
-

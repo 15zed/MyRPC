@@ -1,4 +1,4 @@
-# MyRPC ：参考Dubbo实现的一个简易的RPC框架
+# MyRPC ：一个简易的RPC框架
 
 ## 效果演示：
 ![yilai](https://github.com/15zed/MyRPC/assets/108381807/d5a9b295-a8bf-422d-b026-d6ee5782ef9d)
